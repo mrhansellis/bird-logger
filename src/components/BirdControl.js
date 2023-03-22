@@ -16,7 +16,7 @@ class BirdControl extends React.Component {
     let button = null;
 
     currentlyVisibleState = <SightingList />
-    buttonText="Add Ticket";
+    buttonText="Add Encounter";
     button = <button>{buttonText}</button> ;
 
     return (
