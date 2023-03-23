@@ -7,14 +7,27 @@ class BirdControl extends React.Component {
     super(props);
     this.state = {
       mainSightingList: [],
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      editing: false
     };
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedSighting != null){
+      this.setState({
+        formVisibleOnPage: false,
+        selectedSighting: null,
+        editing: false
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
+  }
+
+  handleEditClick = () => {
+    this.setState({editing: true});
   }
 
   handleAddingNewSightingToList = (newSighting) => {
