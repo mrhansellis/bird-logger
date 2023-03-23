@@ -1,13 +1,27 @@
 import React from "react";
 import Sighting from "./Sighting";
+import PropTypes from "prop-types";
 
-function SightingList(){
+function SightingList(props){
   return (
-    <Sighting
-      bird="Cormarant"
-      location="Kelley point park"
-      dateTime="6-6-17, 1300"/>
+    <>
+      <hr/>
+      {props.sightingList.map((sighting) =>
+        <Sighting
+          whenSightingClicked = { props.onSightingSelection }
+          species = {sighting.species}
+          location = {sighting.location}
+          encounterDate = {sighting.encounterDate}
+          id={sighting.id}
+          key= {sighting.id}/>
+      )}
+    </>
   );
 }
+
+SightingList.propTypes = {
+  sightingList: PropTypes.array,
+  onSightingSelection: PropTypes.func
+};
 
 export default SightingList;

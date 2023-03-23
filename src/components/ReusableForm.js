@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { v4 } from "uuid";
 
 export default function ReusableForm(props) {
   
   return (
     <>
-      <form onSubmit={props.handleNewReusableFormSubmission}>
+      <form onSubmit={props.formSubmissionHandler}>
         <input 
           type='text'
           name='species'
@@ -16,14 +15,15 @@ export default function ReusableForm(props) {
           name='location'
           placeholder='Location' />
         <input 
-         type='date'
-         name='encounterDate' />
+          type='date'
+          name='encounterDate' />
+        <button type="submit">{props.buttonText}</button>          
       </form>
     </>
-  )
+  );
 }
 
 ReusableForm.propTypes = {
-  handleNewReusableFormSubmission: PropTypes.func,
+  formSubmissionHandler: PropTypes.func,
   buttonText: PropTypes.string
 };
